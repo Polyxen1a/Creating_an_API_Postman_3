@@ -4,6 +4,7 @@ package com.skypro.creating_an_api_postman_3.service;
 import com.skypro.creating_an_api_postman_3.model.Recipe;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,13 +36,14 @@ public class RecipeServiceImpl {
     @Override
     public Recipe removeRecipe(int id) {
         if (recipeMap.containsKey(id)) {
-            throw new NotFoundException("Рецепт с заданным id не найден")
+            throw new NotFoundException("Рецепт с заданным id не найден");
         }
         @Override
-        public Recipe updateRecipe ( int id){
+        public Recipe updateRecipe(int id, Recipe recipe) {
             if (recipeMap.containsKey(id)) {
-                throw new NotFoundException("Рецепт с заданным id не найден")
+                throw new NotFoundException("Рецепт с заданным id не найден");
             }
             return recipeMap.put(id, recipe);
         }
     }
+}
