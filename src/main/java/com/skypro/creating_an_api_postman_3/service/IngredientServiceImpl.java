@@ -31,6 +31,7 @@ public class IngredientServiceImpl {
         }
         return ingredientMap.get(id);
     }
+
     @Override
     public Collection<Ingredient> getAll() {
         return ingredientMap.values();
@@ -43,13 +44,14 @@ public class IngredientServiceImpl {
         }
         return ingredientMap.get(id);
     }
-@Override
+
+    @Override
     public Ingredient updateIngredient(int id, Ingredient ingredient) {
         if (!ingredientMap.containsKey(id)) {
             throw new NotFoundException("Ингредиент с заданным id не найден");
         }
-    ingredientMap.put(id, ingredient);
-    return ingredient;
+        ingredientMap.put(id, ingredient);
+        return ingredient;
     }
 
 }

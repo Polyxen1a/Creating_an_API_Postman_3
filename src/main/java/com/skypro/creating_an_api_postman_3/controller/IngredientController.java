@@ -27,16 +27,16 @@ public class IngredientController {
             description = "Поиск ингредиента по id")
     @ApiResponse(
             responseCode = "200", description = "Ингредиент найден", content = {
-                    @Content(mediaType = "aplication/json", shema = @Shema(implementation = Ingredient.class))
+            @Content(mediaType = "aplication/json", shema = @Shema(implementation = Ingredient.class))
     }
-    )})
-        @Parameters(value = {@Parameter(name = "id", example = "1")})
+    ) })
+@Parameters(value = {@Parameter(name = "id", example = "1")})
 ResponseEntity<Ingredient> getIngredient(@PathVariable Integer id){
-Ingredient ingredient = ingredientsService.getIngredient(id);
-return ResponsEntity.ok(ingredient);
+        Ingredient ingredient=ingredientsService.getIngredient(id);
+        return ResponsEntity.ok(ingredient);
 
         }
-        @Operation(summary = "Добавление ингредиента")
+@Operation(summary = "Добавление ингредиента")
 @ApiResponses(value = {
         @ApiResponse(
                 responseCode = "200",
@@ -54,7 +54,7 @@ ResponseEntity<Ingredient> addIngredient(@Valid @RequestBody Ingredient ingredie
         }
         return ResponseEntity.ok(ingredientService.addIngredient(ingredient));
         }
-        @GetMapping
+@GetMapping
 @Operation(summary = "Получение всех ингредиентов")
 @ApiResponses(value = {
         @ApiResponse(
@@ -71,7 +71,7 @@ ResponseEntity<Ingredient> addIngredient(@Valid @RequestBody Ingredient ingredie
 public Collection<Ingredient> getAll(){
         return this.ingredientService.getAll();
         }
-        @PutMapping("/{id}")
+@PutMapping("/{id}")
 @Operation(summary = "Изменение игредиентов по id")
 @ApiResponses(value = {
         @ApiResponse(
@@ -86,10 +86,10 @@ public Collection<Ingredient> getAll(){
         )
 })
 @Parameters(value = {@Parameter(name = "id", example = "1")})
-ResponseEntity<Ingredient> undateIngredient(@PathVariable Integer id, @Valid @Request Ingredient ingredient) {
-        return ResponseEntity.ok(ingredientService.updateIngredient(id, ingredient));
+ResponseEntity<Ingredient> undateIngredient(@PathVariable Integer id,@Valid @Request Ingredient ingredient){
+        return ResponseEntity.ok(ingredientService.updateIngredient(id,ingredient));
         }
-        @DeleteMapping("/{id}")
+@DeleteMapping("/{id}")
 @Operation(summary = "Удаление ингредиентов по id")
 @ApiResponses(value = {
         @ApiResponse(
@@ -97,19 +97,19 @@ ResponseEntity<Ingredient> undateIngredient(@PathVariable Integer id, @Valid @Re
                 description = "Ингредиент удален"
         )
 })
-        @Parameters(value = {@Parameter(name = "id", example = "1")})
-ResponseEntity<Ingredient> removeIngredient(@PathVariable Integer id) {
+@Parameters(value = {@Parameter(name = "id", example = "1")})
+ResponseEntity<Ingredient> removeIngredient(@PathVariable Integer id){
         return ResponseEntity.ok(ingredientService.removeIngredient(id));
-}
+        }
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 @ExceptionHandler(MethodArgumentNotValidException.class)
 public Map<String, String> hadleValidationExceptions(
-        MethodArgumentNotValidException ex) {
-    Map<String, String> errors = new HashMap<>();
-    ex.getBindingResult().getAllErrors().forEach((error) -> {
-        String fieldName = ((FieldError) error).getDefaultMessage();
-        String errorMessage = error.getDefaultMessage();
-        errors.put(fieldName, errorMessage);
+        MethodArgumentNotValidException ex){
+        Map<String, String> errors=new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error)->{
+        String fieldName=((FieldError)error).getDefaultMessage();
+        String errorMessage=error.getDefaultMessage();
+        errors.put(fieldName,errorMessage);
         });
-    return errors;
+        return errors;
         })

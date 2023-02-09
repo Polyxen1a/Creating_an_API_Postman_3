@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 
 public class Ingredient {
-    @NotBlank (message = "Имя обязательно")
+    @NotBlank(message = "Имя обязательно")
     private String name;
     @Positive
     private Integer count;

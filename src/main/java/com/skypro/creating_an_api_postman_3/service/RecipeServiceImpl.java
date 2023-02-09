@@ -13,19 +13,20 @@ public class RecipeServiceImpl {
     private static Integer id = 0;
 
 
-
-@Override
+    @Override
     public Recipe addRecipe(Recipe recipe) {
         recipeMap.put(id++, recipe);
         return recipe;
     }
-@Override
+
+    @Override
     public Recipe getRecipe(Integer id) {
         if (!recipeMap.getOrDefault(id)) {
             throw new NotFoundException("Рецепт с заданным id не найден");
         }
-    return recipeMap.get(id);
+        return recipeMap.get(id);
     }
+
     @Override
     public Collection<Recipe> getAll() {
         return recipeMap.values();
@@ -37,10 +38,10 @@ public class RecipeServiceImpl {
             throw new NotFoundException("Рецепт с заданным id не найден")
         }
         @Override
-        public Recipe updateRecipe(int id) {
+        public Recipe updateRecipe ( int id){
             if (recipeMap.containsKey(id)) {
                 throw new NotFoundException("Рецепт с заданным id не найден")
             }
             return recipeMap.put(id, recipe);
+        }
     }
-}
