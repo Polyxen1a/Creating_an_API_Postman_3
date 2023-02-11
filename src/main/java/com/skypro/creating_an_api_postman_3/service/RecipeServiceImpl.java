@@ -39,7 +39,7 @@ public class RecipeServiceImpl {
             throw new NotFoundException("Рецепт с заданным id не найден");
         }
         @Override
-        public Recipe updateRecipe(int id, Recipe recipe) {
+        public Recipe updateRecipe;(int id, Recipe recipe) {
             if (recipeMap.containsKey(id)) {
                 throw new NotFoundException("Рецепт с заданным id не найден");
             }

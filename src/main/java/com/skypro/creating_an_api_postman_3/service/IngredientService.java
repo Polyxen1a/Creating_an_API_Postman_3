@@ -6,9 +6,9 @@ import com.skypro.creating_an_api_postman_3.model.Ingredient;
 import java.util.Collection;
 
 public interface IngredientService {
-    Ingredient addIngredient(Ingredient ingredient);
+    int addIngredient(Ingredient ingredient);
 
-    Ingredient getIngredient(Integer id);
+    Ingredient getIngredient(int number);
 
     Collection<Ingredient> getAll();
 

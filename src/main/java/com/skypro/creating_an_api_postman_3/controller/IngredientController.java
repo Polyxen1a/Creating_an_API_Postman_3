@@ -37,13 +37,13 @@ public class IngredientController {
             description = "Поиск ингредиента по id")
     @ApiResponse(
             responseCode = "200", description = "Ингредиент найден", content = {
-            @Content(mediaType = "aplication/json", shema = @Shema(implementation = Ingredient.class))
+            @Content(mediaType = "aplication/json", schema = @Schema(implementation = Ingredient.class))
     }
     )
     @Parameters(value = {@Parameter(name = "id", example = "1")})
     ResponseEntity<Ingredient> getIngredient(@PathVariable Integer id) {
-        Ingredient ingredient = ingredientsService.getIngredient(id);
-        return ResponsEntity.ok(ingredient);
+        Ingredient ingredient = ingredientService.getIngredient(id);
+        return ResponseEntity.ok(ingredient);
 
     }
 
