@@ -25,4 +25,7 @@ public class Recipe {
     private List<Ingredient> ingredients;
     @NotEmpty
     private List<String> steps;
+
+    public Recipe getId() {
+    }
 }
